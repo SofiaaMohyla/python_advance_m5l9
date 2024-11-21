@@ -2,8 +2,8 @@ from rest_framework.generics import ListCreateAPIView, GenericAPIView
 from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin, ListModelMixin, RetrieveModelMixin, \
     CreateModelMixin
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from .models import Artifact, Anomaly
-from .serializers import ArtifactSerializer, AnomalySerializer
+from .models import Artifact, Anomaly, Stalker
+from .serializers import ArtifactSerializer, AnomalySerializer, StalkerSerializer
 
 
 class ArtifactViewSet(ModelViewSet):
@@ -23,9 +23,9 @@ class AnomalyViewSet(
     serializer_class = AnomalySerializer
 
 
-class AnomalyListCreateView(GenericAPIView, ListModelMixin, CreateModelMixin):
-    queryset = Anomaly.objects.all()
-    serializer_class = AnomalySerializer
+class StalkerListCreateView(GenericAPIView, ListModelMixin, CreateModelMixin):
+    queryset = Stalker.objects.all()
+    serializer_class = StalkerSerializer
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -33,9 +33,10 @@ class AnomalyListCreateView(GenericAPIView, ListModelMixin, CreateModelMixin):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class AnomalyRetrieveView(GenericAPIView, RetrieveModelMixin):
-    queryset = Anomaly.objects.all()
-    serializer_class = AnomalySerializer
+
+class StalkerRetrieveView(GenericAPIView, RetrieveModelMixin):
+    queryset = Stalker.objects.all()
+    serializer_class = StalkerSerializer
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
