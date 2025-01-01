@@ -5,7 +5,8 @@ from .views import ArtifactViewSet, AnomalyViewSet, StalkerListCreateView, Stalk
 router = DefaultRouter()
 router.register(r'artifacts', ArtifactViewSet)
 router.register(r'anomalies', AnomalyViewSet)
-print(router.urls)
+
+#print(router.urls)
 urlpatterns = [
     path('stalkers/', StalkerListCreateView.as_view(), name='stalker-list-create'),
     path('stalkers/<int:pk>/', StalkerRetrieveView.as_view(), name='stalker-detail'),

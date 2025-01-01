@@ -16,7 +16,7 @@ class AnomalyViewSet(
     RetrieveModelMixin,
     ListModelMixin,
     #UpdateModelMixin,
-    #DestroyModelMixin,
+    DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Anomaly.objects.all()
